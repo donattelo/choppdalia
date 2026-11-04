@@ -1,0 +1,447 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Chopp Dalla Itapema</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&display=swap">
+<style>
+/* Layout: carregamento com caneco em tela cheia, depois site de uma página em faixas (verde da marca, uma faixa âmbar de chamada final). */
+:root {
+  --green: #19413b;
+  --green-deep: #11302b;
+  --green-lift: #21524a;
+  --bar: rgba(25, 65, 59, .94);
+  --line: rgba(255, 255, 255, .16);
+  --ink: #ffffff;
+  --muted: #b3cdc6;
+  --beer: #f2a516;
+  --beer-deep: #d4800a;
+  --foam: #fff4d6;
+  --steel: #b8c9cb;
+  --steel-deep: #6f8a8d;
+  --font-display: "Alfa Slab One", Georgia, "Times New Roman", serif;
+  --font-body: "Bricolage Grotesque", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --fill-time: 6.5s;
+  --gutter-l: max(16px, env(safe-area-inset-left, 0px));
+  --gutter-r: max(16px, env(safe-area-inset-right, 0px));
+  color-scheme: dark;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--green);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--green); }
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; }
+h1, h2, h3, p { margin: 0; }
+h1, h2 { font-family: var(--font-display); font-weight: 400; text-wrap: balance; }
+h3 { font-weight: 700; font-size: 1.25rem; line-height: 1.25; }
+:focus-visible { outline: 3px solid var(--beer); outline-offset: 3px; border-radius: 4px; }
+
+.wrap { width: 100%; max-width: 1080px; margin: 0 auto; padding-left: var(--gutter-l); padding-right: var(--gutter-r); }
+.band { padding-block: clamp(56px, 9vw, 104px); }
+.eyebrow { font-weight: 600; font-size: .8rem; letter-spacing: .16em; text-transform: uppercase; color: var(--beer); margin-bottom: 14px; }
+.h2 { font-size: clamp(1.9rem, 5.2vw, 3rem); line-height: 1.08; margin-bottom: 28px; }
+.lead { font-size: 1.15rem; color: var(--muted); max-width: 46ch; }
+section[id] { scroll-margin-top: 84px; }
+
+/* botões */
+.btn { display: inline-flex; align-items: center; gap: 10px; font: inherit; font-weight: 700; text-decoration: none; padding: 14px 24px; border-radius: 999px; border: 2px solid transparent; cursor: pointer; line-height: 1.1; }
+.btn svg { width: 20px; height: 20px; flex: none; }
+.btn-beer { background: var(--beer); color: var(--green-deep); }
+.btn-beer:hover { background: #ffb92e; }
+.btn-line { border-color: var(--ink); color: var(--ink); }
+.btn-line:hover { background: rgba(255,255,255,.1); }
+.btn-dark { background: var(--green-deep); color: var(--ink); }
+.btn-dark:hover { background: #0b2420; }
+.btn-line-dark { border-color: var(--green-deep); color: var(--green-deep); }
+.btn-line-dark:hover { background: rgba(17,48,43,.1); }
+.ico { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ---------- carregamento ---------- */
+.splash {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 24px var(--gutter-r) 24px var(--gutter-l);
+  background: radial-gradient(60% 42% at 50% 52%, rgba(242,165,22,.2), transparent 70%), var(--green);
+}
+.splash-logo { width: clamp(110px, 30vw, 150px); }
+.scene { width: min(62vw, 260px); aspect-ratio: 270 / 340; max-width: 100%; }
+.scene svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.loading { font-family: var(--font-display); font-size: clamp(1.6rem, 6vw, 2.2rem); letter-spacing: .02em; color: var(--beer); }
+.loading .dot { animation: blink 1.2s infinite both; }
+.loading .dot:nth-child(2) { animation-delay: .2s; }
+.loading .dot:nth-child(3) { animation-delay: .4s; }
+.notice { max-width: 28ch; text-align: center; font-size: 1.125rem; color: var(--muted); text-wrap: balance; animation: reveal .7s ease 1.8s both; }
+.skip { font: inherit; font-weight: 700; color: var(--ink); background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; text-decoration-color: var(--beer); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+.skip:hover { color: var(--beer); }
+
+.beer { transform: translateY(165px); animation: rise var(--fill-time) cubic-bezier(.4,.1,.5,1) forwards; }
+.stream { transform-box: fill-box; transform-origin: top; animation: pour var(--fill-time) linear forwards; }
+.bubble { animation: float 2.2s linear infinite; opacity: 0; }
+.bubble:nth-child(2) { animation-delay: .5s; animation-duration: 2.6s; }
+.bubble:nth-child(3) { animation-delay: 1.1s; animation-duration: 1.9s; }
+.bubble:nth-child(4) { animation-delay: 1.5s; animation-duration: 2.4s; }
+.bubble:nth-child(5) { animation-delay: .9s; animation-duration: 2.8s; }
+.knob { transform-box: fill-box; transform-origin: center bottom; animation: lever var(--fill-time) ease forwards; }
+@keyframes rise { to { transform: translateY(0); } }
+@keyframes pour { 0% { opacity: 0; } 4% { opacity: 1; } 93% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes float { 0% { transform: translateY(150px); opacity: 0; } 15% { opacity: .8; } 90% { opacity: .6; } 100% { transform: translateY(0); opacity: 0; } }
+@keyframes blink { 0%, 80%, 100% { opacity: .2; } 40% { opacity: 1; } }
+@keyframes reveal { from { opacity: 0; visibility: hidden; transform: translateY(6px); } to { opacity: 1; visibility: visible; transform: none; } }
+@keyframes lever { 0% { transform: rotate(0); } 5% { transform: rotate(-26deg); } 92% { transform: rotate(-26deg); } 100% { transform: rotate(0); } }
+
+/* ---------- topo ---------- */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 9; background: var(--bar); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 8px; }
+.top-logo img { height: 52px; width: auto; }
+.nav { display: none; gap: 28px; }
+.nav a { text-decoration: none; font-weight: 600; font-size: .95rem; color: var(--muted); }
+.nav a:hover { color: var(--ink); }
+.top-actions { display: flex; align-items: center; gap: 10px; }
+.top-actions .btn { padding: 10px 18px; font-size: .95rem; }
+.icon-link { display: inline-grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; border: 2px solid var(--line); }
+.icon-link:hover { border-color: var(--ink); }
+.icon-link svg { width: 20px; height: 20px; }
+@media (min-width: 820px) { .nav { display: flex; } }
+
+/* ---------- hero ---------- */
+.hero { padding-block: clamp(40px, 7vw, 88px) clamp(40px, 6vw, 72px); overflow: hidden; }
+.hero .wrap { display: grid; gap: 32px; align-items: center; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); }
+.hero h1 { font-size: clamp(2.6rem, 8.4vw, 5rem); line-height: 1; color: var(--ink); margin-bottom: 20px; }
+.hero .cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.age { display: inline-flex; align-items: center; gap: 12px; margin-top: 28px; font-size: .95rem; color: var(--muted); }
+.age b { display: inline-grid; place-items: center; width: 40px; height: 40px; border: 2px solid var(--muted); border-radius: 50%; font-size: .85rem; color: var(--ink); }
+.hero-art { position: relative; display: grid; place-items: center; min-width: 0; }
+.hero-art::before { content: ""; position: absolute; width: min(100%, 380px); aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(242,165,22,.5), rgba(242,165,22,0) 68%); }
+.hero-art img { position: relative; height: clamp(320px, 46vw, 500px); width: auto; filter: drop-shadow(0 24px 28px rgba(0,0,0,.35)); }
+@media (max-width: 819px) {
+  .hero .wrap { grid-template-columns: minmax(0, 1fr); }
+  .hero-art { order: -1; }
+  .hero-art img { height: 300px; }
+}
+
+/* ---------- o que fazemos / sobre ---------- */
+.split { display: grid; gap: clamp(28px, 5vw, 64px); align-items: center; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+@media (max-width: 819px) { .split { grid-template-columns: minmax(0, 1fr); } .split.rev .photo { order: -1; } }
+.photo { border-radius: 20px; overflow: hidden; border: 1px solid var(--line); background: var(--green-deep); }
+.photo img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; }
+.feature-list { display: flex; flex-direction: column; }
+.feature { padding-block: 22px; border-top: 1px solid var(--line); display: grid; gap: 6px; }
+.feature:last-child { border-bottom: 1px solid var(--line); }
+.feature p { color: var(--muted); max-width: 44ch; }
+.about p + p { margin-top: 14px; }
+.about p { color: var(--muted); font-size: 1.1rem; max-width: 50ch; }
+.alt { background: var(--green-deep); }
+
+/* ---------- como funciona ---------- */
+.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 28px; grid-template-columns: repeat(3, minmax(0, 1fr)); counter-reset: step; }
+.steps li { border-top: 2px solid var(--beer); padding-top: 18px; display: grid; gap: 8px; align-content: start; }
+.steps .n { font-family: var(--font-display); font-size: 2.6rem; line-height: 1; color: var(--beer); }
+.steps p { color: var(--muted); }
+@media (max-width: 719px) { .steps { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- diferenciais ---------- */
+.why { background: var(--green-lift); }
+.why-grid { display: grid; gap: 32px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.why-grid h3 { margin-bottom: 8px; }
+.why-grid p { color: #cfe3de; }
+@media (max-width: 719px) { .why-grid { grid-template-columns: minmax(0, 1fr); gap: 24px; } }
+
+/* ---------- dúvidas ---------- */
+.faq { display: grid; gap: 0; max-width: 720px; }
+.faq details { border-top: 1px solid var(--line); }
+.faq details:last-child { border-bottom: 1px solid var(--line); }
+.faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-block: 20px; font-weight: 700; font-size: 1.1rem; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; font-family: var(--font-display); font-size: 1.6rem; color: var(--beer); transition: transform .2s; }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq details p { padding-bottom: 20px; color: var(--muted); max-width: 52ch; }
+
+/* ---------- chamada final ---------- */
+.order { background: var(--beer); color: var(--green-deep); }
+.order .eyebrow { color: var(--green-deep); }
+.order h2 { font-size: clamp(2.1rem, 6.4vw, 3.8rem); line-height: 1.04; margin-bottom: 16px; max-width: 16ch; }
+.order .lead { color: #3d3a14; }
+.order .cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.contact { margin-top: 36px; padding-top: 24px; border-top: 2px solid rgba(17,48,43,.3); display: grid; gap: 14px; grid-template-columns: repeat(2, minmax(0, 220px)); }
+.contact dt { font-weight: 600; font-size: .8rem; letter-spacing: .14em; text-transform: uppercase; opacity: .75; }
+.contact dd { margin: 2px 0 0; font-weight: 700; font-size: 1.15rem; overflow-wrap: anywhere; }
+@media (max-width: 519px) { .contact { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- rodapé ---------- */
+.foot { background: var(--green-deep); padding-block: 36px; }
+.foot .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; }
+.foot img { height: 64px; width: auto; }
+.foot p { color: var(--muted); font-size: .9rem; max-width: 40ch; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .beer { animation: none; transform: none; }
+  .stream, .bubble, .knob { animation: none; }
+  .stream, .bubble { opacity: 0; }
+  .loading .dot { animation: none; }
+  .notice { animation: none; }
+}
+</style>
+
+<section class="splash" id="splash">
+  <img class="splash-logo" src="img/logo-branco.png" alt="Dalla, cervejas especiais, Itapema" width="900" height="697">
+  <div class="scene" aria-hidden="true">
+    <svg viewBox="0 0 270 340" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="steel" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#e4eeef"/>
+          <stop offset="1" stop-color="#7f979a"/>
+        </linearGradient>
+        <linearGradient id="liquid" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#f7b82e"/>
+          <stop offset="1" stop-color="#d4800a"/>
+        </linearGradient>
+        <clipPath id="glass">
+          <rect x="112" y="104" width="96" height="184" rx="8"/>
+        </clipPath>
+      </defs>
+
+      <rect x="60" y="34" width="122" height="26" rx="8" fill="url(#steel)"/>
+      <rect x="146" y="58" width="28" height="22" rx="5" fill="url(#steel)"/>
+      <rect x="150" y="78" width="20" height="9" rx="3" fill="var(--steel-deep)"/>
+      <rect x="60" y="34" width="12" height="26" rx="4" fill="var(--steel-deep)"/>
+      <rect x="100" y="14" width="10" height="22" rx="3" fill="var(--steel)"/>
+      <g class="knob"><circle cx="105" cy="10" r="10" fill="var(--beer)"/></g>
+
+      <rect class="stream" x="157" y="87" width="6" height="205" rx="3" fill="url(#liquid)" opacity="0"/>
+
+      <path d="M108 124 H212 V280 Q212 294 198 294 H122 Q108 294 108 280 Z" fill="rgba(255,255,255,.08)"/>
+
+      <g clip-path="url(#glass)">
+        <g class="beer">
+          <rect x="112" y="136" width="96" height="170" fill="url(#liquid)"/>
+          <rect x="112" y="136" width="96" height="16" fill="var(--foam)"/>
+          <circle cx="122" cy="136" r="13" fill="var(--foam)"/>
+          <circle cx="138" cy="130" r="13" fill="var(--foam)"/>
+          <circle cx="156" cy="134" r="14" fill="var(--foam)"/>
+          <circle cx="174" cy="129" r="13" fill="var(--foam)"/>
+          <circle cx="190" cy="134" r="13" fill="var(--foam)"/>
+          <circle cx="202" cy="138" r="11" fill="var(--foam)"/>
+          <g fill="var(--foam)">
+            <circle class="bubble" cx="126" cy="290" r="2.2"/>
+            <circle class="bubble" cx="146" cy="290" r="1.8"/>
+            <circle class="bubble" cx="168" cy="290" r="2.4"/>
+            <circle class="bubble" cx="186" cy="290" r="1.6"/>
+            <circle class="bubble" cx="198" cy="290" r="2"/>
+          </g>
+        </g>
+      </g>
+
+      <path d="M108 124 H212 V280 Q212 294 198 294 H122 Q108 294 108 280 Z" fill="none" stroke="#fff" stroke-opacity=".8" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M212 146 H234 Q252 146 252 166 V236 Q252 256 234 256 H212" fill="none" stroke="#fff" stroke-opacity=".8" stroke-width="9" stroke-linecap="round"/>
+      <path d="M120 140 V270" stroke="#fff" stroke-opacity=".35" stroke-width="4" stroke-linecap="round"/>
+
+      <rect x="84" y="298" width="152" height="9" rx="4" fill="url(#steel)"/>
+      <rect x="92" y="307" width="136" height="6" rx="3" fill="var(--steel-deep)"/>
+    </svg>
+  </div>
+
+  <p class="loading" role="status">Carregando<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span></p>
+  <p class="notice">Não quer esperar? <button class="skip" id="skip" type="button">Clique aqui</button> e peça logo seu chopp!</p>
+</section>
+
+<div id="site" hidden>
+  <header class="top">
+    <div class="wrap">
+      <a class="top-logo" href="#inicio" aria-label="Chopp Dalla Itapema, início"><img src="img/logo-branco.png" alt="Dalla Itapema" width="900" height="697"></a>
+      <nav class="nav" aria-label="Seções">
+        <a href="#servicos">Serviços</a>
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#duvidas">Dúvidas</a>
+        <a href="#contato">Contato</a>
+      </nav>
+      <div class="top-actions">
+        <a class="icon-link" href="https://instagram.com/choppdalla_itapema" target="_blank" rel="noopener" aria-label="Instagram da Chopp Dalla Itapema">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg>
+        </a>
+        <a class="btn btn-beer" href="https://wa.me/5547992422301?text=Ol%C3%A1!%20Quero%20pedir%20chopp%20Dalla." target="_blank" rel="noopener">Peça seu chopp</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="wrap">
+        <div>
+          <p class="eyebrow">Distribuidor de chopp</p>
+          <h1>Chopp Dalla Itapema</h1>
+          <p class="lead">Chopp delivery para Itapema e região.</p>
+          <div class="cta">
+            <a class="btn btn-beer" href="https://wa.me/5547992422301?text=Ol%C3%A1!%20Quero%20pedir%20chopp%20Dalla." target="_blank" rel="noopener">
+              <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+              Peça seu chopp
+            </a>
+            <a class="btn btn-line" href="https://instagram.com/choppdalla_itapema" target="_blank" rel="noopener">
+              <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg>
+              Instagram
+            </a>
+          </div>
+          <p class="age"><b>18+</b> Proibido para menores de 18 anos.</p>
+        </div>
+        <div class="hero-art">
+          <img src="img/garrafa.webp" alt="Garrafa de 1,5 litro de chopp Dalla Pilsen" width="400" height="600">
+        </div>
+      </div>
+    </section>
+
+    <section class="band alt" id="servicos">
+      <div class="wrap split">
+        <div>
+          <p class="eyebrow">O que fazemos</p>
+          <h2 class="h2">Chopp bom, entregue no seu endereço</h2>
+          <div class="feature-list">
+            <div class="feature">
+              <h3>Melhor Pilsen</h3>
+              <p>Nossa Pilsen foi eleita a melhor do Brasil. É cerveja especial, puro malte.</p>
+            </div>
+            <div class="feature">
+              <h3>Chopp Delivery</h3>
+              <p>Entregamos o chopp com frescor e sabor em Itapema e região.</p>
+            </div>
+            <div class="feature">
+              <h3>Região atendida</h3>
+              <p>Atendemos Itapema e arredores, para você aproveitar o chopp em casa.</p>
+            </div>
+          </div>
+        </div>
+        <figure class="photo" style="margin:0">
+          <img src="img/torneira.webp" alt="Copo sendo enchido com chopp Dalla direto da torneira" width="760" height="760">
+        </figure>
+      </div>
+    </section>
+
+    <section class="band" id="sobre">
+      <div class="wrap split rev">
+        <figure class="photo" style="margin:0">
+          <img src="img/caneca.webp" alt="Caneca de chopp Dalla com colarinho cremoso" width="760" height="749">
+        </figure>
+        <div class="about">
+          <p class="eyebrow">Sobre nós</p>
+          <h2 class="h2">De Itapema para Itapema</h2>
+          <p>A Chopp Dalla Itapema é distribuidora de chopp na região de Itapema. Fazemos delivery para a cidade e arredores, com as cervejas especiais Dalla, puro malte.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="band alt" id="como-funciona">
+      <div class="wrap">
+        <p class="eyebrow">Como funciona</p>
+        <h2 class="h2">Pedir é rápido</h2>
+        <ol class="steps">
+          <li><span class="n" aria-hidden="true">1</span><h3>Escolha o chopp</h3><p>Defina qual chopp Dalla você quer receber.</p></li>
+          <li><span class="n" aria-hidden="true">2</span><h3>Faça o pedido</h3><p>Chame a gente no WhatsApp e informe o endereço da entrega.</p></li>
+          <li><span class="n" aria-hidden="true">3</span><h3>Receba e aproveite</h3><p>O chopp chega gelado e pronto para servir.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="band why" id="diferenciais">
+      <div class="wrap">
+        <p class="eyebrow">Por que escolher</p>
+        <h2 class="h2">Três motivos para pedir da Dalla</h2>
+        <div class="why-grid">
+          <div><h3>Qualidade reconhecida</h3><p>Pilsen eleita a melhor do Brasil, feita com puro malte.</p></div>
+          <div><h3>Atendimento local</h3><p>Atendimento feito em Itapema, direto pelo WhatsApp e pelo Instagram.</p></div>
+          <div><h3>Praticidade</h3><p>Você pede pelo celular e recebe em casa.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band" id="duvidas">
+      <div class="wrap">
+        <p class="eyebrow">Dúvidas</p>
+        <h2 class="h2">Perguntas frequentes</h2>
+        <div class="faq">
+          <details>
+            <summary>Qual é a área de cobertura?</summary>
+            <p>Atendemos Itapema e toda a região.</p>
+          </details>
+          <details>
+            <summary>Como o chopp chega até mim?</summary>
+            <p>O chopp é entregue gelado, pronto para servir.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="band order" id="contato">
+      <div class="wrap">
+        <p class="eyebrow">Fale com a gente</p>
+        <h2>Peça agora seu Chopp Dalla</h2>
+        <p class="lead">Chame no WhatsApp e receba em casa. Proibido para menores de 18 anos.</p>
+        <div class="cta">
+          <a class="btn btn-dark" href="https://wa.me/5547992422301?text=Ol%C3%A1!%20Quero%20pedir%20chopp%20Dalla." target="_blank" rel="noopener">
+            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+            Pedir pelo WhatsApp
+          </a>
+          <a class="btn btn-line-dark" href="https://instagram.com/choppdalla_itapema" target="_blank" rel="noopener">
+            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg>
+            Seguir no Instagram
+          </a>
+        </div>
+        <dl class="contact">
+          <div><dt>WhatsApp</dt><dd>(47) 99242-2301</dd></div>
+          <div><dt>Instagram</dt><dd>@choppdalla_itapema</dd></div>
+        </dl>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap">
+      <img src="img/logo-branco.png" alt="Dalla, cervejas especiais, Itapema" width="900" height="697">
+      <p>Chopp Dalla Itapema. Proibido para menores de 18 anos.</p>
+    </div>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var splash = document.getElementById('splash');
+  var site = document.getElementById('site');
+  var done = false;
+  var timer;
+
+  function enter(target) {
+    if (done) return;
+    done = true;
+    clearTimeout(timer);
+    splash.hidden = true;
+    site.hidden = false;
+    window.scrollTo(0, 0);
+    if (target) {
+      try { history.replaceState(null, '', '#' + target); } catch (e) {}
+      var el = document.getElementById(target);
+      if (el) el.scrollIntoView();
+    }
+  }
+
+  document.getElementById('skip').addEventListener('click', function () { enter('contato'); });
+
+  var h = location.hash.slice(1);
+  if (h && document.getElementById(h)) {
+    enter(h);
+  } else {
+    // a caneca leva 6,5 s para encher; o site abre logo depois
+    timer = setTimeout(function () { enter(); }, 7400);
+  }
+})();
+</script>
+
+</body></html>
